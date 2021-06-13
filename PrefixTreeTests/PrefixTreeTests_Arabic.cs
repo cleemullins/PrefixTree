@@ -29,10 +29,6 @@ namespace PrefixTreeTests
 
             // Act
             var matchResults = tree.FindMatches(prefixToFind);
-            foreach(var s in matchResults)
-            {
-                System.Diagnostics.Debug.WriteLine(s);
-            }
 
             // Assert
             Assert.True(matchResults.Count == exactMatches.Length);

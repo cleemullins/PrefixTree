@@ -85,6 +85,50 @@ namespace PrefixTreeTests
             Assert.True(matches.Count == 0);
         }
 
+        [Fact]
+        public void ZeroMaxResults()
+        {
+            // Arrange
+            ImmutablePrefixTree tree = PrefixTreeBuilder.CreatePrefixTree("A", "B");
+
+            // Act            
+            var matches = tree.FindMatches("A", 0); // Ask for 0 results,
+
+            // Assert
+            // Even though the tree has a match, this test asked for 0 results. 
+            Assert.True(matches.Count == 0); 
+        }
+
+        [Fact]
+        public void ThereCanBeOnlyOne()
+        {
+            // Arrange
+            ImmutablePrefixTree tree = PrefixTreeBuilder.CreatePrefixTree("A", "AA", "AB");
+
+            // Act            
+            var matches = tree.FindMatches("A", 1); // Ask for 1 results
+
+            // Assert
+            // Verify only a single result was returned, even though the 
+            // tree actually has 3 matches. 
+            Assert.True(matches.Count == 1);
+        }
+
+        [Fact]
+        public void ThereCanBeOnlyTwo()
+        {
+            // Arrange
+            ImmutablePrefixTree tree = PrefixTreeBuilder.CreatePrefixTree("A", "AA", "AB");
+
+            // Act            
+            var matches = tree.FindMatches("A", 2); // Ask for 2 results
+
+            // Assert
+            // Verify only two result was returned, even though the 
+            // tree actually has 3 matches. 
+            Assert.True(matches.Count == 2);
+        }
+
         // Format: <prefix to find>, <match from tree>, [Words to add to Tree]
         [Theory]
         [InlineData("a", "A", new string[] { "a", "b", "c" })]

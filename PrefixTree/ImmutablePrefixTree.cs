@@ -18,13 +18,13 @@ namespace PrefixTree
         /// constructor is to prevent developer-creation of these, yet still
         /// enable the Unit Tests to create and poke at the implementation. 
         /// </summary>
-        /// <param name="originalTree">The fully created, never again to be changed, PrefixTree.</param>
+        /// <param name="originalTree">The fully created, never again to be changed, PrefixTree.</param>        
         internal ImmutablePrefixTree(PrefixTree originalTree) 
         {
             this.MutableTree = originalTree;
         }
         private PrefixTree MutableTree { get; }
-        
+
         /// <summary>
         /// Given a prefix such as "tri", all strings that start
         /// with the prefix will be returned in a list. 
@@ -32,12 +32,13 @@ namespace PrefixTree
         /// <param name="prefix">The prefix for which matches are returned. The 
         /// prefix will be string normalized using Form C and run through a 
         /// culture invarient upper casing.</param>
+        /// <param name="maxResults">The maximum number of results to return, defaulted to 100.</param>
         /// <returns>
         /// The returned set of strings are Unicode Form C normalized.
         /// </returns>
-        public List<string> FindMatches(string prefix)
-        {
-            return this.MutableTree.FindMatches(prefix);
+        public List<string> FindMatches(string prefix, int maxResults = 100)
+        {            
+            return this.MutableTree.FindMatches(prefix, maxResults);
         }
     }
 }

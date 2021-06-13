@@ -37,13 +37,21 @@ namespace PrefixTree
         /// <param name="prefix">The prefix for which matches are returned. The 
         /// prefix will be string normalized using Form C and run through a 
         /// culture invarient upper casing.</param>
+        /// <param name="maxResults">The maximum number of results to return.</param>
         /// <returns>
         /// The returned set of strings are Unicode Form C normalized.
         /// </returns>        
-        public List<string> FindMatches(string prefix)
+        public List<string> FindMatches(string prefix, int maxResults)
         {
             List<string> results = new List<string>();
             if (string.IsNullOrWhiteSpace(prefix))
+            {
+                return results;
+            }
+
+            // If the client asked for a nonsensical number of results, just
+            // return an empty result set. 
+            if (maxResults < 1)
             {
                 return results;
             }
@@ -91,7 +99,7 @@ namespace PrefixTree
             // character of the prefix, knowing the each node in the recursion will
             // add itself (including the first node). 
             var fixedPrefix = normalizedPrefix.Remove(normalizedPrefix.Length - 1);
-            FindAllWords(visitingNode, fixedPrefix, allWords);
+            FindAllWords(visitingNode, fixedPrefix, allWords, maxResults);
 
             return allWords;
         }
@@ -107,8 +115,16 @@ namespace PrefixTree
         /// recurses through the tree.</param>
         /// <param name="prefix">The current "total" prefix. "car" -> "card" -> "cards" </param>
         /// <param name="wordsFound">The unordered list of complete words found so far</param>
-        private void FindAllWords(Node node, string prefix, List<string> wordsFound)
+        /// <param name="maxResults">The maximum number of complete words to return.</param>
+        private void FindAllWords(Node node, string prefix, List<string> wordsFound, int maxResults)
         {
+            if (wordsFound.Count >= maxResults)
+            {
+                // A sufficent number of results have been found, so 
+                // all futher searching can stop.
+                return;
+            }
+
             string wordSoFar = string.Concat(prefix, node.Prefix);
 
             if (node.CompleteWord)
@@ -118,7 +134,7 @@ namespace PrefixTree
                         
             foreach(var nodePrefixPair in node.Children)
             {                
-                FindAllWords(nodePrefixPair.Value, wordSoFar, wordsFound);
+                FindAllWords(nodePrefixPair.Value, wordSoFar, wordsFound, maxResults);
             }
         }
         /// <summary>
