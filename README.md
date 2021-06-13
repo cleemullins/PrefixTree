@@ -29,7 +29,17 @@ In the tree pictured above, we would see the following results:
 3. The code is both Left-To-Right and Right-To-Left tested. I've never written RTL code before, and was looking to see what was needed. Plumbing that all the way through was very interesting! To confirm code, normalization and comparisions are working properly the Arabic word file is the top 1000 frequent arabic words and the RTL nature of the tests appears to be working.
 
 # Future Considerations
-1. This code is inefficent, although that seems fine. There's no caching, and memory use is unoptimized. Nevertheless, I was able to load in the entire English Scrabble dictionary (it's in the tests) with no trouble. 
+1. This code is inefficent. There's no caching, and memory use is unoptimized, and the obvious algorithmic changes around word frequency and common letter combinations is not examined. Nevertheless, I was able to load in the entire English Scrabble dictionary (it's in the tests) with no trouble. 
+2. There are likley far more efficient representations of words than the "1 character per node" solution here. Given the public API surface and the immutable nature of the runtime, different implementations could be swapped out without impact. 
+
+# Unit Tests
+The majority of Unit Tests are [XUnit Theory Tests](https://hamidmosalla.com/2017/02/25/xunit-theory-working-with-inlinedata-memberdata-classdata/). These allow the same Assemble/Action/Assert code to be used with multiple data set. An example is here, where you can see the data being tested is encapsulated in the Unit Test attribute. 
+
+Here we see two different tests run using the same code logic. In the first test, a search pattern of "aal" is run, and expected to return an exact result set. In the 2nd example a pattern of "zymologi" is run and expected to return 5 results. 
+
+![image](https://user-images.githubusercontent.com/1165321/121821276-e5357a00-cc4c-11eb-9be8-1b2b213e2e15.png)
+
+This approach lets me write data oriented tests to validate logic, which increases the quality of the tests. 
 
 # Testing in Codespaces
 This project works in Github Codespaces. To use Codespaces, be sure to install the .Net Core Test Explorer  into the VS Code container. 
