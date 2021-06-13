@@ -10,11 +10,13 @@ namespace PrefixTreeTests
         // Format: <prefix to find>, <match that MUST be returned from tree>, [Words to add to Tree]
         // The english scrabble dictionary has 4 words that being with "AAL". 
         // AAL, AALII, AALIIS, AALS    
-        [InlineData("aal", new string[] { "AAL", "AALII", "AALIIS", "AALS" })]
+        [InlineData("aal", 
+            new string[] { "AAL", "AALII", "AALIIS", "AALS" })]
 
         // 5 words that being with "zymologi". 
         //  ZYMOLOGIC, ZYMOLOGICAL, ZYMOLOGIES, ZYMOLOGIST, ZYMOLOGISTS
-        [InlineData("zymologi", new string[] { "ZYMOLOGIC", "ZYMOLOGICAL", "ZYMOLOGIES", "ZYMOLOGIST", "ZYMOLOGISTS" })]
+        [InlineData("zymologi", 
+            new string[] { "ZYMOLOGIC", "ZYMOLOGICAL", "ZYMOLOGIES", "ZYMOLOGIST", "ZYMOLOGISTS" })]
         public void EnglighMultiMatchesTheory(string prefixToFind, string[] exactMatches)
         {
             // Arrange
