@@ -1,4 +1,4 @@
-![Ubuntu .NEt Core 3.x Build](https://github.com/cleemullins/PrefixTree/blob/main/.github/workflows/build.yml/badge.svg)
+[![Prefix Tree](https://github.com/cleemullins/PrefixTree/actions/workflows/build.yml/badge.svg)](https://github.com/cleemullins/PrefixTree/actions/workflows/build.yml)
 
 # PrefixTree
 A C# Prefix Tree implementation with RTL language support and Unicode Normalization
