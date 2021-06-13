@@ -21,3 +21,10 @@ match the prefix.
 # Future Considerations
 1. This code is inefficent, although that seems fine. There's no caching, and memory use is unoptimized. Nevertheless, I was able to load in the entire English Scrabble dictionary (it's in the tests) with no trouble. 
 
+# Testing in Codespaces
+This project works in Github Codespaces. To use Codespaces, be sure to install the .Net Core Test Explorer  into the VS Code container. 
+![image](https://user-images.githubusercontent.com/1165321/121817728-ef994900-cc37-11eb-96e9-a3119a0b2a0c.png)
+
+Once the Test Exporer is installed, the tests can be viewed, run, and debugged all in the browser. 
+![image](https://user-images.githubusercontent.com/1165321/121817765-2a9b7c80-cc38-11eb-8978-2e94ddd1dab1.png)
+
