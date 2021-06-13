@@ -29,13 +29,3 @@ jobs:
             path: TestResults-${{ matrix.dotnet-version }}
         # Use always() to always run this step to publish test results when there are test failures
         if: ${{ always() }}
-      - name: XUnit Viewer
-        id: xunit-viewer
-        uses: AutoModality/action-xunit-viewer@v1  
-      - name: Attach the report
-        uses: actions/upload-artifact@v1
-        with:
-            name: dotnet-results-${{ matrix.dotnet-version }}
-            path: TestResults-${{ matrix.dotnet-version }}
-          #name: ${{ steps.xunit-viewer.outputs.report-name }}
-          #path: ${{ steps.xunit-viewer.outputs.report-dir }}
