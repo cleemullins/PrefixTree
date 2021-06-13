@@ -35,7 +35,7 @@ Emoji's can be treated as words in many scenarios. A complex emoji may have muli
 
 ![image](https://user-images.githubusercontent.com/1165321/121822824-0f3f6a00-cc56-11eb-9dc7-836f9fbee354.png)
 
-The Unit Tests validate Emoji support through theory testing. An understanding of UTF-32, [UTF-16 Surrogate Pairs](https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF), and [grapheme's](https://unicode.org/reports/tr29/) may be helpful to understand these tests. The mechanism by which [Emoji's are composed](http://unicode.org/reports/tr51/)is fascinating. The applicability of the Prefix Tree on emoji selection seems clear. 
+The Unit Tests validate Emoji support through theory testing. An understanding of UTF-32, [UTF-16 Surrogate Pairs](https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF), and [grapheme's](https://unicode.org/reports/tr29/) may be helpful to understand these tests. The mechanism by which [Emoji's are composed](http://unicode.org/reports/tr51/) is fascinating. The applicability of the Prefix Tree on emoji selection seems clear, although a purpose build Emoji version that understands the Codepoint atributes (selectors, sequences, modifiers, qualified & fully-qualified & non-qualifiied combinations) would be better.
 
 # Future Considerations
 1. This code is inefficient. There's no caching, and memory use is unoptimized, and the obvious algorithmic changes around word frequency and common letter combinations is not examined. Nevertheless, I was able to load in the entire English Scrabble dictionary (it's in the tests) with no trouble. 
