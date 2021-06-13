@@ -9,7 +9,7 @@ namespace PrefixTreeTests
     {
         [Theory]
         // Format: <prefix to find>, <match that MUST be returned from tree>, [Words to add to Tree]
-        // The russing world list has 4 words that being with "вз".     
+        // The russian word list has 4 words that being with "вз".     
         // NOTE: The below text is NOT Unicode normalized. To do an exact compare,
         // the strings need to be normlaized. 
         [InlineData("вз", new string[] { "взгляд", "взглянуть", "взрослый", "взять" })]
@@ -41,13 +41,13 @@ namespace PrefixTreeTests
 
         private static ImmutablePrefixTree CreateFromRussianWordList()
         {
-            const string scrabbleWordFileName = "RussianWords.txt";
-            if (!File.Exists(scrabbleWordFileName))
+            const string fileName = "RussianWords.txt";
+            if (!File.Exists(fileName))
             {
                 throw new FileNotFoundException("Russian Word file is missing");
             }
 
-            var allWords = File.ReadAllLines(scrabbleWordFileName);
+            var allWords = File.ReadAllLines(fileName);
             return PrefixTreeBuilder.CreatePrefixTree(allWords);
         }
     }
