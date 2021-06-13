@@ -29,6 +29,13 @@ In the tree pictured above, we would see the following results:
 
 3. **Right-to-Left tested (RTL)**. The code is both Left-To-Right and Right-To-Left tested. I've never written RTL code before, and was looking to see what was needed. Plumbing that all the way through was very interesting! To confirm code, normalization and comparisons are working properly the Arabic word file is the top 1000 frequent Arabic words and the RTL nature of the tests appears to be working.
 
+## Emoji's
+Emoji's can be treated as words in many scenarios. A complex emoji may have mulitple UTF-32 Codepoints and is subject to composistion rules. For use in this Prefix Tree, Emoji's are treated as words, and may be encoded into the Prefix Tree and searched by prefix. A sample enoding of 3 Emoji's sharing compound prefixes is seen here:
+
+![image](https://user-images.githubusercontent.com/1165321/121822824-0f3f6a00-cc56-11eb-9dc7-836f9fbee354.png)
+
+The Unit Tests validate Emoji support through theory testing. An understanding of UTF-32, UTF-16 Surrogate Pairs, and graphme's may be helpful to understand these tests. 
+
 # Future Considerations
 1. This code is inefficient. There's no caching, and memory use is unoptimized, and the obvious algorithmic changes around word frequency and common letter combinations is not examined. Nevertheless, I was able to load in the entire English Scrabble dictionary (it's in the tests) with no trouble. 
 2. There are far more efficient representations of words than the "1 character per node" solution here (the ZIP / huffman coding algorithm comes immediately to mind). Given the public API surface and the immutable nature of the runtime, different implementations could be swapped out without impact. 
