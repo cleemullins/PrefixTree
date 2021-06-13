@@ -1,7 +1,10 @@
 [![Prefix Tree](https://github.com/cleemullins/PrefixTree/actions/workflows/build.yml/badge.svg)](https://github.com/cleemullins/PrefixTree/actions/workflows/build.yml)
 
 # PrefixTree
-A C# Prefix Tree implementation with RTL language support and Unicode Normalization
+A C# Prefix Tree implementation with RTL language support and Unicode Normalization. The prefix tree is constructed via a builder, and exposed to developers as an immutable datastructure. The tree exposes only search semantics for runtime consumption. 
+
+Internally, the tree contains a node for each letter (Unicode Codepoint) and termination conditions on words. For a small tree, this represents as:
+![image](https://user-images.githubusercontent.com/1165321/121821117-b1a62000-cc4b-11eb-8270-18cf06eaee84.png)
 
 # Overview
 Provides an implementation of a Prefix Tree API.
@@ -10,6 +13,13 @@ public List<string> FindMatches(string prefix)
 ```
 This API takes a standard string and returns all strings that 
 match the prefix. 
+
+In the tree pictured above, we would see the following results:
+|Search   	|  Words 	|
+|---	|---	|
+|A   	|A, AT, AM, ALL, ALT   	|
+|AL 	|ALL, ALT   	|
+|C   	|CAR   	|
 
 # Interesting Aspects
 1. The PrefixTree, once constructed, is immutable. This allows consumption of the tree to be done without concerns around concurrency or async patterns. All mutating operations happen at object construction, allowing for the immutable pattern. 
