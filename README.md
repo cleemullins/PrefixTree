@@ -8,7 +8,8 @@ Internally, the tree contains a node for each letter (UTF-32 codepoint) and term
 ![image](https://user-images.githubusercontent.com/1165321/121821117-b1a62000-cc4b-11eb-8270-18cf06eaee84.png)
 
 # Overview
-Provides an implementation of a Prefix Tree API.
+Provides an implementation of a Prefix Tree API. 
+
 ```c#
 public List<string> FindMatches(string prefix)
 ```
