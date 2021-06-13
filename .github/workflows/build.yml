@@ -29,8 +29,17 @@ jobs:
             path: TestResults-${{ matrix.dotnet-version }}
         # Use always() to always run this step to publish test results when there are test failures
         if: ${{ always() }}
-      - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1
-        if: always()
+  test:
+    runs-on: ubuntu-18.04
+    name: Generate Test Reports
+    steps:
+      - name: XUnit Viewer
+        id: xunit-viewer
+        uses: AutoModality/action-xunit-viewer@v1  
+      - name: Attach the report
+        uses: actions/upload-artifact@v1
         with:
-          files: test-results/**/*.xml
+            name: dotnet-results-${{ matrix.dotnet-version }}
+            path: TestResults-${{ matrix.dotnet-version }}
+          #name: ${{ steps.xunit-viewer.outputs.report-name }}
+          #path: ${{ steps.xunit-viewer.outputs.report-dir }}
