@@ -1,11 +1,11 @@
 ﻿using PrefixTree;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace PrefixTreeTests
 {
+    /// <summary>
+    /// Basic functionality and boundry condition testing for the Prefix Tree. 
+    /// </summary>
     public class ImmutablePrefixTreeTests
     {
         [Fact]
@@ -58,8 +58,14 @@ namespace PrefixTreeTests
         [Fact]
         public void SingleLetterTreeMatchUTF16SurrogatePair()
         {
+            // This tests makes sure Surrogate Pairs, which are needed for 
+            // language, are properly handled in the PrefixTree. This tests uses a 
+            // UTF-32 Codepoint that requires Surrogate Pair encoding for represenation
+            // in UTF-16. The codepoint is round-tripped through the tree to verify
+            // all the encoding are correct. 
+
             // Arrange
-            // D83D + DE03 => \u1F603
+            // U+D83D + U+DE03 == U+u1F603
             string surrogatePair = "\ud83d\uDE03"; // UTF32 is U+1F603, 😃            
 
             ImmutablePrefixTree tree = PrefixTreeBuilder.CreatePrefixTree(surrogatePair);

@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
+﻿using Xunit;
 
 namespace PrefixTree
 {
+    /// <summary>
+    /// Basic structural and functionality tests on Node. Includes
+    /// tests around Unicode representation to verify encodings are 
+    /// supported.
+    /// </summary>
     public class NodeTests
     {
         [Fact]

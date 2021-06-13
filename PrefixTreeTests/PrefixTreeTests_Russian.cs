@@ -1,7 +1,6 @@
 ﻿using PrefixTree;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Xunit;
 
 namespace PrefixTreeTests
@@ -39,7 +38,6 @@ namespace PrefixTreeTests
                 Assert.Contains(requiredMatch, matchResults);
             }
         }
-
 
         private static ImmutablePrefixTree CreateFromRussianWordList()
         {

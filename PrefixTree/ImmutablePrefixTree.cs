@@ -31,7 +31,7 @@ namespace PrefixTree
         /// </summary>
         /// <param name="prefix">The prefix for which matches are returned. The 
         /// prefix will be string normalized using Form C and run through a 
-        /// culture invarient upper casing.</param>
+        /// culture invariant upper casing.</param>
         /// <param name="maxResults">The maximum number of results to return, defaulted to 100.</param>
         /// <returns>
         /// The returned set of strings are Unicode Form C normalized.

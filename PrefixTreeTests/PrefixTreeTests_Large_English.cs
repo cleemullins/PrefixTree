@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using PrefixTree;
 using System.IO;
-using System.Text;
-using PrefixTree;
 using Xunit;
 
 namespace PrefixTreeTests
